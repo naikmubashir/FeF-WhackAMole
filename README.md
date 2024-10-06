@@ -26,6 +26,7 @@ HTML is used to structure the game’s interface, CSS adds styling and animation
 - [Screenshot](#Screenshot)
 - [How to Contribute](#how-to-contribute)
 - [Contact](#contact)
+- [License](#license)
 
 ---
 
@@ -101,3 +102,10 @@ If you have any questions, feedback, or just want to get in touch, feel free to 
 
 - **GitHub**: [naikmubashir](https://github.com/naikmubashir)
 - **Email**: naikmubashir@example.com
+
+---
+
+## license 💳
+
+This Project is under The MIT License. See the License file for more details
+
