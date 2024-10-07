@@ -1,144 +1,152 @@
 html {
-    box-sizing: border-box;
-    font-size: 10px;
-    background: #ffc600;
-    height: 100%;
-  }
-  
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
-  
-  body {
-    height: 85%;
-    padding: 0;
-    margin: 0;
-    font-family: "Amatic SC", cursive;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-  
+  box-sizing: border-box;
+  font-size: 10px;
+  background: #ffc600;
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 85%;
+  padding: 0;
+  margin: 0;
+  font-family: "Amatic SC", cursive;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+h1 {
+  text-align: center;
+  font-size: 10rem;
+  line-height: 1;
+  margin-bottom: 0;
+}
+
+.score {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0 3rem;
+  line-height: 1;
+  border-radius: 1rem;
+}
+
+.game {
+  padding: 5px;
+  width: 600px;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.hole {
+  flex: 1 0 33.33%;
+  overflow: hidden;
+  position: relative;
+  height: 150px; /* Ensures enough height for the mole */
+}
+
+.hole:after {
+  display: block;
+  background: url(dirt.svg) bottom center no-repeat;
+  background-size: contain;
+  content: "";
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  z-index: 2;
+  bottom: -30px;
+}
+
+.mole {
+  background: url("mole.svg") bottom center no-repeat;
+  background-size: 60%;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s;
+}
+
+.hole.up .mole {
+  top: -10px; /* This will bring the mole fully into view */
+}
+
+.start-btn {
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+  padding: 15px 40px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #388E3C;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.start-btn:hover {
+  background-color: #45a049;
+  box-shadow: 0 3px 0 #2e7d32;
+  transform: translateY(-3px);
+}
+
+.start-btn:active {
+  box-shadow: 0 2px 0 #2e7d32;
+  transform: translateY(2px);
+}
+
+.start-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.titles {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column; /* Changed to column */
+  justify-content: center;
+  align-items: center;
+}
+
+.titles h2 {
+  font-size: 5rem;
+  margin: 1px 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
   h1 {
-    text-align: center;
-    font-size: 10rem;
-    line-height: 1;
-    margin-bottom: 0;
+      font-size: 5rem;
   }
-  
-  .score {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 0 3rem;
-    line-height: 1;
-    border-radius: 1rem;
-  }
-  
-  .game {
-    padding: 5px;
-    width: 600px;
-    height: 500px;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-  }
-  
+
   .hole {
-    flex: 1 0 33.33%;
-    overflow: hidden;
-    position: relative;
+      flex: 1 0 50%;
   }
-  
-  .hole:after {
-    display: block;
-    background: url(dirt.svg) bottom center no-repeat;
-    background-size: contain;
-    content: "";
-    width: 100%;
-    height: 70px;
-    position: absolute;
-    z-index: 2;
-    bottom: -30px;
-  }
-  
-  .mole {
-    background: url("mole.svg") bottom center no-repeat;
-    background-size: 60%;
-    position: absolute;
-    top: 100%;
-    width: 100%;
-    height: 100%;
-    transition: all 0.4s;
-  }
-  
-  .hole.up .mole {
-    top: 0;
-  }
-  
+
   .start-btn {
-    font-family: 'Arial', sans-serif;
-    font-size: 24px;
-    padding: 15px 40px;
-    background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 5px 0 #388E3C; /* Slight shadow effect */
-    transition: all 0.3s ease; /* Smooth transitions */
-    text-transform: uppercase;
+      font-size: 18px;
+      padding: 10px 30px;
   }
-  .start-btn:hover {
-    background-color: #45a049; /* Darker green on hover */
-    box-shadow: 0 3px 0 #2e7d32; /* Adjust shadow */
-    transform: translateY(-3px); /* Slight upward movement */
-  }
-  .titles {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
-  }
-  .start-btn:active {
-    box-shadow: 0 2px 0 #2e7d32; /* Reduced shadow */
-    transform: translateY(2px); /* Button presses down */
-  }
-  .start-btn:disabled {
-    cursor: not-allowed; /* Show disabled cursor */
-    opacity: 0.6; /* Slightly faded for disabled */
-  }
-
-  @media (max-width: 768px) {
-    h1 {
-        font-size: 5rem;
-    }
-    
-    .hole {
-        flex: 1 0 50%;
-        /*height: 120px; /* Adjust height for mobile */
-    }
-
-    .start-btn {
-        font-size: 18px;
-        padding: 10px 30px;
-    }
 }
 
 @media (max-width: 480px) {
-    h1 {
-        font-size: 4rem;
-    }
+  h1 {
+      font-size: 4rem;
+  }
 
-    .hole {
-        flex: 1 0 100%; /* Full width on small screens */
-        /*height: 100px; /* Adjust height for small devices */
-    }
+  .hole {
+      flex: 1 0 100%;
+  }
 
-    .start-btn {
-        font-size: 16px;
-        padding: 8px 20px;
-    }
+  .start-btn {
+      font-size: 16px;
+      padding: 8px 20px;
+  }
 }
-  
