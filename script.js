@@ -11,6 +11,8 @@ let countdownInterval;
 const music = new Audio('alexander-nakarada-chase(chosic.com).mp3'); // Replace with your actual music file
 music.loop = true; // Loop the music
 
+const missSound = new Audio('miss-sound.mp3');
+
 function randomTime(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
@@ -106,4 +108,26 @@ function bonk(e) {
   scoreBoard.textContent = score;
 }
 
+function miss(e) {
+  if (!e.target.classList.contains('mole')) {
+    score--;
+    scoreBoard.textContent = score;
+    missSound.play();
+    showMissedAnimation(e.target);
+  }
+}
+
+function showMissedAnimation(hole) {
+  const missText = document.createElement('div');
+  missText.textContent = 'Missed!';
+  missText.className = 'missed';
+  hole.appendChild(missText);
+
+  setTimeout(() => {
+    hole.removeChild(missText);
+  }, 500); // 0.5 seconds
+}
+
+// Add event listeners for holes
+holes.forEach(hole => hole.addEventListener('click', miss));
 moles.forEach(mole => mole.addEventListener('click', bonk));
