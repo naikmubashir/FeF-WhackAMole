@@ -7,7 +7,15 @@
   let timeUp = false;
   let flag=false;
   let score = 0;
-
+  let countdown = 10
+  let gameDuration = countdown * 1000
+  
+  function updateTimer(time) {
+    if(time === 10) console.log('start timer')
+    const value = time < 10 ? "0" + time : time;
+    document.querySelector('.timer').textContent = `00:${value}`
+  }
+    
   function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min);
   }
@@ -29,7 +37,7 @@
     hole.classList.add('up');
     setTimeout(() => {
       hole.classList.remove('up');
-      if (!timeUp) peep();
+      if (!timeUp && countdown !== 0) peep();
     }, time);
   }
 
@@ -38,10 +46,19 @@
     scoreBoard.textContent = 0;
     timeUp = false;
     score = 0;
+    updateTimer(countdown);
     peep();
+    const tick = setInterval(() => {
+      countdown--
+      updateTimer(countdown)
+    }, 1000);
+    
     setTimeout(() => {
       startBtn.disabled=false;
-      timeUp = true}, 10000)
+      timeUp = true
+      clearInterval(tick)
+      countdown = 10;
+    }, gameDuration)
   }
 
   function bonk(e) {
