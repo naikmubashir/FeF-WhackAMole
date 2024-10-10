@@ -105,24 +105,46 @@ html {
     top: 0;
   }
   
-  .start-btn {
+  .btn {
     font-family: 'Arial', sans-serif;
     font-size: 24px;
     padding: 15px 40px;
-    background-color: #4CAF50; /* Green background */
+  
     color: white; /* White text */
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 5px 0 #388E3C; /* Slight shadow effect */
+   
     transition: all 0.3s ease; /* Smooth transitions */
     text-transform: uppercase;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px); /* Slight upward movement */
+  }
+
+  .btn:active {
+    transform: translateY(2px); /* Button presses down */
+  }
+
+  .start-btn {
+    background-color: #4CAF50; /* Green background */
+    box-shadow: 0 5px 0 #388E3C; /* Slight shadow effect */
   }
   .start-btn:hover {
     background-color: #45a049; /* Darker green on hover */
     box-shadow: 0 3px 0 #2e7d32; /* Adjust shadow */
-    transform: translateY(-3px); /* Slight upward movement */
   }
+
+  .start-btn:active { 
+    box-shadow: 0 2px 0 #2e7d32; /* Reduced shadow */
+  }
+
+  .start-btn:disabled {
+    cursor: not-allowed; /* Show disabled cursor */
+    opacity: 0.6; /* Slightly faded for disabled */
+  }
+  
   .titles {
     margin-top: 10px;
     display: flex;
@@ -130,16 +152,22 @@ html {
     justify-content: center;
     align-items: center;
   }
-  .start-btn:active {
-    box-shadow: 0 2px 0 #2e7d32; /* Reduced shadow */
-    transform: translateY(2px); /* Button presses down */
-  }
-  .start-btn:disabled {
-    cursor: not-allowed; /* Show disabled cursor */
-    opacity: 0.6; /* Slightly faded for disabled */
+ 
+  .rules-btn {
+    margin-left: 1rem;
+    background: #fe4a49;
+    box-shadow: 0 5px 0 #da3f3f;
   }
 
-  @media (max-width: 768px) {
+  .rules-btn:hover {
+    background-color: #f14343; /* Darker green on hover */
+    box-shadow: 0 3px 0 #c43838; /* Adjust shadow */
+  }
+  .rules-btn:active {
+    box-shadow: 0 2px 0 #da3f3f; /* Reduced shadow */
+  }
+
+@media (max-width: 768px) {
     h1 {
         font-size: 5rem;
     }
@@ -149,7 +177,7 @@ html {
         /*height: 120px; /* Adjust height for mobile */
     }
 
-    .start-btn {
+    .btn {
         font-size: 18px;
         padding: 10px 30px;
     }
@@ -165,7 +193,7 @@ html {
         /*height: 100px; /* Adjust height for small devices */
     }
 
-    .start-btn {
+    .btn {
         font-size: 16px;
         padding: 8px 20px;
     }
