@@ -13,7 +13,10 @@
 
 
     <h1>Whack-a-mole! <span class="score">0</span></h1>
-    <button class="start-btn" onClick="startGame()">Start!</button>
+    <div>
+      <button class="btn start-btn" onClick="startGame()">Start!</button>
+      <button class="btn rules-btn">Rules</button>
+    </div>
   </div>
 
   <div class="game">
@@ -36,6 +39,19 @@
       <div class="mole"></div>
     </div>
   </div>
+
+  <div id="rules-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Rules</h2>
+      <ul>
+        <li><strong>How to Play:</strong> Click on the moles to score points!</li>
+        <li><strong>Scoring System:</strong> Each mole hit earns you 1 point. Missing moles will deduct 1 point!</li>
+        <li><strong>Time Limit:</strong> Each gameplay lasts for 30 seconds. Try to score as many points as possible!</li>
+      </ul>
+    </div>
+  </div>
+
 <script src="script.js"></script>
 </body>
 </html>

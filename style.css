@@ -105,24 +105,46 @@ html {
     top: 0;
   }
   
-  .start-btn {
+  .btn {
     font-family: 'Arial', sans-serif;
     font-size: 24px;
     padding: 15px 40px;
-    background-color: #4CAF50; /* Green background */
+  
     color: white; /* White text */
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 5px 0 #388E3C; /* Slight shadow effect */
+   
     transition: all 0.3s ease; /* Smooth transitions */
     text-transform: uppercase;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px); /* Slight upward movement */
+  }
+
+  .btn:active {
+    transform: translateY(2px); /* Button presses down */
+  }
+
+  .btn:disabled {
+    cursor: not-allowed; /* Show disabled cursor */
+    opacity: 0.6; /* Slightly faded for disabled */
+  }
+
+  .start-btn {
+    background-color: #4CAF50; /* Green background */
+    box-shadow: 0 5px 0 #388E3C; /* Slight shadow effect */
   }
   .start-btn:hover {
     background-color: #45a049; /* Darker green on hover */
     box-shadow: 0 3px 0 #2e7d32; /* Adjust shadow */
-    transform: translateY(-3px); /* Slight upward movement */
   }
+
+  .start-btn:active { 
+    box-shadow: 0 2px 0 #2e7d32; /* Reduced shadow */
+  }
+
   .titles {
     margin-top: 10px;
     display: flex;
@@ -130,16 +152,85 @@ html {
     justify-content: center;
     align-items: center;
   }
-  .start-btn:active {
-    box-shadow: 0 2px 0 #2e7d32; /* Reduced shadow */
-    transform: translateY(2px); /* Button presses down */
-  }
-  .start-btn:disabled {
-    cursor: not-allowed; /* Show disabled cursor */
-    opacity: 0.6; /* Slightly faded for disabled */
+ 
+  .rules-btn {
+    margin-left: 1rem;
+    background: #fe4a49;
+    box-shadow: 0 5px 0 #da3f3f;
   }
 
-  @media (max-width: 768px) {
+  .rules-btn:hover {
+    background-color: #f14343;
+    box-shadow: 0 3px 0 #c43838; /* Adjust shadow */
+  }
+  
+  .rules-btn:active {
+    box-shadow: 0 2px 0 #da3f3f; /* Reduced shadow */
+  }
+  
+  /* Modal styling */
+  .modal {
+    display: none; /* Hidden by default */
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Black transparent overlay */
+  }
+
+  .modal-content {
+    position: relative;
+    background-color: #382706; 
+    color: white;
+    margin: 15% auto;
+    padding: 24px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    text-align: left;
+    
+    h2 {
+      font-size: 6rem;
+      margin-block: 16px;
+      text-align: center;
+    }
+  }
+
+  /* Close button */
+  .close-btn {
+    position: absolute;
+    right: 2.4rem;
+    top: 0;
+    font-size: 8rem;
+    line-height: 1.2;
+    font-weight: bold;
+  }
+
+  .close-btn:hover,
+  .close-btn:focus {
+    color: white;
+    cursor: pointer;
+  }
+
+  /* Rules list styling */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  ul li {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  ul li strong {
+    color: #ffc600;
+  }
+
+@media (max-width: 768px) {
     h1 {
         font-size: 5rem;
     }
@@ -149,9 +240,18 @@ html {
         /*height: 120px; /* Adjust height for mobile */
     }
 
-    .start-btn {
+    .btn {
         font-size: 18px;
         padding: 10px 30px;
+    }
+
+    .modal-content h2 {
+      font-size: 4rem;
+    }
+
+    ul li {
+      font-size: 20px;
+      margin-bottom: 16px;
     }
 }
 
@@ -165,7 +265,7 @@ html {
         /*height: 100px; /* Adjust height for small devices */
     }
 
-    .start-btn {
+    .btn {
         font-size: 16px;
         padding: 8px 20px;
     }

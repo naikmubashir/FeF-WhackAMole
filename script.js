@@ -2,10 +2,23 @@ const holes = document.querySelectorAll('.hole');
 const scoreBoard = document.querySelector('.score');
 const startBtn = document.querySelector('.start-btn');
 const moles = document.querySelectorAll('.mole');
+const showRulesBtn = document.querySelector('.rules-btn')
+const closeBtn = document.querySelector('.close-btn')
+const rulesModal = document.getElementById('rules-modal')
 let lastHole;
 let timeUp = false;
 let score = 0;
 let countdownInterval;
+
+function openModal() {
+  rulesModal.style.display = 'block'
+  startBtn.disabled = true;
+}
+
+function closeModal() {
+  rulesModal.style.display = 'none'
+  startBtn.disabled = false;
+}
 
 // Create audio element for background music
 const music = new Audio('alexander-nakarada-chase(chosic.com).mp3'); // Replace with your actual music file
@@ -39,6 +52,7 @@ function peep() {
 
 function startGame() {
   startBtn.disabled = true;
+  showRulesBtn.disabled = true;
   scoreBoard.textContent = 0;
   timeUp = false;
   score = 0;
@@ -80,6 +94,7 @@ function startGame() {
 
 function endGame() {
   startBtn.disabled = false;
+  showRulesBtn.disabled = false;
   timeUp = true;
 
   // Stop the music
@@ -131,3 +146,8 @@ function showMissedAnimation(hole) {
 // Add event listeners for holes
 holes.forEach(hole => hole.addEventListener('click', miss));
 moles.forEach(mole => mole.addEventListener('click', bonk));
+
+//Add event listeners to close and open the modal
+showRulesBtn.addEventListener('click', openModal)
+closeBtn.addEventListener('click', closeModal)
+rulesModal.addEventListener('click', closeModal)
