@@ -61,10 +61,14 @@ function startGame() {
   music.currentTime = 3; // Set the music start time
   music.play();
 
+  // Add event listeners for holes
+  holes.forEach(hole => hole.addEventListener('click', miss));
+  moles.forEach(mole => mole.addEventListener('click', bonk));
+
   let countdown = 30; // 30 seconds countdown
   startBtn.textContent = `Time Left: ${countdown}s`;
   startBtn.style.color = ''; // Reset color in case of restart
-
+  
   peep();
 
   // Countdown logic
@@ -99,6 +103,10 @@ function endGame() {
 
   // Stop the music
   music.pause();
+
+  // Remove event listeners for holes
+  holes.forEach(hole => hole.removeEventListener('click', miss));
+  moles.forEach(mole => mole.removeEventListener('click', bonk));
 
   // Get the current high score from local storage
   let highScore = localStorage.getItem('highScore') || 0;
@@ -142,10 +150,6 @@ function showMissedAnimation(hole) {
     hole.removeChild(missText);
   }, 500); // 0.5 seconds
 }
-
-// Add event listeners for holes
-holes.forEach(hole => hole.addEventListener('click', miss));
-moles.forEach(mole => mole.addEventListener('click', bonk));
 
 //Add event listeners to close and open the modal
 showRulesBtn.addEventListener('click', openModal)
